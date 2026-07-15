@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 코딩 챌린지</title>
+
+    <!-- 1. 외부 스타일시트 추가 -->
+    <link rel="stylesheet" href="mystyle.css">
+
+    <!-- 2. 내부 스타일시트 추가 (h1 색상을 네이비로 설정) -->
+    <style>
+        h1 {
+            color: navy;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>이 글자는 네이비(Navy) 색상입니다!</h1>
+
+    <!-- 3. 인라인 스타일 추가 (p 태그 색상을 빨간색으로 설정) -->
+    <p style="color: red;">이 글자는 빨간색(Red)입니다!</p>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 코딩 챌린지</title>
+
+    <!-- 1. 외부 스타일시트 추가 -->
+    <link rel="stylesheet" href="mystyle.css">
+
+    <!-- 2. 내부 스타일시트 추가 -->
+    <style>
+        /* [이전 과제] h1 색상을 네이비로 설정 */
+        h1 {
+            color: navy;
+        }
+
+        /* ----------------------------------------------------
+           👇 여기서부터 이번 과제 내용을 이어서 쓰시면 됩니다! 
+        ---------------------------------------------------- */
+
+        /* 1) 모든 p 요소의 색상을 어두운 회색(dimgray 또는 darkgray)으로 설정 */
+        p {
+            color: dimgray;
+        }
+
+        /* 2) 클래스 선택자 .highlight의 배경색을 노란색으로 설정 */
+        .highlight {
+            background-color: yellow;
+        }
+
+        /* 3) ID 선택자 #intro의 글꼴 크기를 20px로 설정 */
+        #intro {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ID 선택자(#intro)가 적용되어 글씨 크기가 20px가 되는 제목 -->
+    <h1 id="intro">이 글자는 20px 크기의 네이비색 글자입니다! (#intro 적용)</h1>
+
+    <!-- 클래스 선택자(.highlight)가 적용되어 배경이 노란색이 되는 단락 -->
+    <p class="highlight">이 글자는 어두운 회색 글씨에 노란색 배경입니다! (.highlight 적용)</p>
+
+    <!-- 일반 p 태그 (어두운 회색 글씨가 기본 적용됨) -->
+    <p>이 글자는 그냥 평범한 어두운 회색 글자입니다.</p>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 코딩 챌린지 - 최종본</title>
+
+    <!-- 1. 외부 스타일시트 추가 -->
+    <link rel="stylesheet" href="mystyle.css">
+
+    <!-- 2. 내부 스타일시트 추가 -->
+    <style>
+        /* [이전 과제 1] 기본 스타일 */
+        h1 {
+            color: navy;
+        }
+        p {
+            color: dimgray;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+        #intro {
+            font-size: 20px;
+        }
+
+        /* ----------------------------------------------------
+           👇 여기서부터 이번 [버튼, 입력창, 상태 선택자] 과제 내용입니다!
+        ---------------------------------------------------- */
+
+        /* 1) button 기본 디자인 설정 */
+        button {
+            background-color: #04AA6D;  /* 배경색 */
+            color: white;               /* 글자 색상 (흰색) */
+            border: none;               /* 테두리 없음 */
+            padding: 10px 20px;         /* (보기 좋게 여백 살짝 추가) */
+            cursor: pointer;            /* 마우스 올렸을 때 손가락 모양 */
+        }
+
+        /* 2) button에 마우스 올렸을 때 (:hover) 배경색 변경 */
+        button:hover {
+            background-color: #028a4e;
+        }
+
+        /* 3) input에 포커스가 갔을 때 (:focus) 윤곽선(outline) 설정 */
+        input:focus {
+            outline: 2px solid #04AA6D;
+        }
+
+        /* 4) 여러 p 태그 중 첫 번째 p 태그만 (:first-child) 글꼴 굵게(bold) 설정 */
+        p:first-child {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- [테스트용 본문 영역] -->
+    <div>
+        <!-- p:first-child 규칙에 의해 이 녀석만 글씨가 아주 굵게 보입니다! -->
+        <p>이것은 첫 번째 단락(p)이라 자동으로 글씨가 아주 굵게 보입니다! (:first-child)</p>
+        <p>이것은 두 번째 단락(p)이라 굵어지지 않고 일반 두께로 보입니다.</p>
+    </div>
+
+    <hr>
+
+    <h1 id="intro">CSS 챌린지 종합 놀이터</h1>
+    
+    <!-- 클릭하거나 탭(Tab) 키를 눌러서 focus하면 초록색(#04AA6D) 테두리가 생깁니다! -->
+    <p>아래 입력창을 클릭해 보세요 (focus 효과):</p>
+    <input type="text" placeholder="여기를 클릭해보세요!">
+
+    <br><br>
+
+    <!-- 마우스를 올리면 색상이 살짝 더 어두운 초록색(#028a4e)으로 변합니다! -->
+    <button>마우스를 올려보세요! (hover 효과)</button>
+
+</body>
+</html>
