@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+
+    <h1>📝 회원가입</h1>
+    <p>필수 정보를 입력하여 회원가입을 완료해 주세요.</p>
+    <hr>
+
+    <!-- 
+      - action은 signUpResult.html로 지정 (가입 버튼 누르면 이 페이지로 이동합니다)
+      - method는 get 방식으로 지정 
+    -->
+    <form action="signUpResult.html" method="get">
+        
+        <!-- 1. 기본 정보 입력 그룹 -->
+        <fieldset>
+            <legend>개인 정보 입력</legend>
+            <p>
+                <!-- label로 각 input을 묶어줍니다. placeholder와 required 필수 사용! -->
+                <label for="userId">아이디 (ID):</label>
+                <input type="text" id="userId" name="userId" placeholder="아이디를 입력하세요" required>
+            </p>
+            <p>
+                <label for="userPw">비밀번호 (PW):</label>
+                <input type="password" id="userPw" name="userPw" placeholder="비밀번호를 입력하세요" required>
+            </p>
+            <p>
+                <label for="userName">이름:</label>
+                <input type="text" id="userName" name="userName" placeholder="이름을 입력하세요" required>
+            </p>
+            <p>
+                <label for="userEmail">이메일:</label>
+                <input type="email" id="userEmail" name="userEmail" placeholder="example@email.com" required>
+            </p>
+        </fieldset>
+
+        <br>
+
+        <!-- 2. 추가 정보 입력 그룹 -->
+        <fieldset>
+            <legend>추가 정보 입력</legend>
+            
+            <p>
+                <!-- select와 option 태그 활용 -->
+                <label for="birthRoute">가입 경로:</label>
+                <select id="birthRoute" name="birthRoute">
+                    <option value="search">인터넷 검색</option>
+                    <option value="recommend">지인 추천</option>
+                    <option value="sns">SNS 광고</option>
+                    <option value="etc">기타</option>
+                </select>
+            </p>
+
+            <p>
+                <!-- textarea 태그 활용 -->
+                <label for="intro">가입 인사 / 자기소개:</label><br>
+                <textarea id="intro" name="intro" rows="5" cols="40" placeholder="여기에 가입 인사나 남기고 싶은 말을 자유롭게 적어주세요!"></textarea>
+            </p>
+        </fieldset>
+
+        <br>
+
+        <!-- 3. 전송 및 초기화 버튼 구역 (submit, reset) -->
+        <div>
+            <!-- 가입하기 버튼 (form을 제출하는 submit) -->
+            <input type="submit" value="가입하기">
+            
+            <!-- 다시 쓰기 버튼 (입력한 내용을 싹 비워주는 reset) -->
+            <input type="reset" value="다시 쓰기">
+        </div>
+
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>나의 추천 여행지</title>
+</head>
+<body>
+
+    <h1>✈️ 내가 사랑하는 추천 여행지</h1>
+    <p>아름다운 자연과 평화로운 감성을 만끽할 수 있는 최고의 여행지를 소개합니다.</p>
+    <hr>
+
+    <!-- 1. 배경 음악 / 오디오 섹션 (audio, source 필수 활용) -->
+    <h2>🎵 여행지의 감성을 담은 사운드</h2>
+    <p>아래 재생 버튼을 누르면 잔잔한 자연의 소리나 배경 음악을 들으며 감상하실 수 있습니다.</p>
+    <!-- controls 속성을 주어야 재생/정지 버튼이 화면에 보입니다. -->
+    <audio controls>
+        <source src="media/bgm.mp3" type="audio/mpeg">
+        브라우저가 오디오 태그를 지원하지 않습니다.
+    </audio>
+
+    <br><br>
+    <hr>
+
+    <!-- 2. 여행지 소개 및 이미지 섹션 (img 필수 활용) -->
+    <h2>📸 여행지 스케치: 드넓은 만년설과 산맥</h2>
+    <p>눈앞에 펼쳐지는 웅장한 설산의 풍경은 일상의 피로를 단번에 날려줍니다.</p>
+    <!-- 
+      media 폴더 안에 있는 trip.jpg 파일을 상대경로로 불러옵니다. 
+      alt 속성은 시각장애인이나 이미지 로딩 실패 시 노출되는 필수 설명 텍스트입니다.
+    -->
+    <img src="media/trip.jpg" alt="구름 위에 우뚝 솟은 웅장한 만년설산 풍경" width="600">
+
+    <br><br>
+    <hr>
+
+    <!-- 3. 여행지 동영상 섹션 (video, source 필수 활용) -->
+    <h2>🎥 생생한 여행지 현장 영상</h2>
+    <p>카메라에 생생하게 담아온 여행지의 바람과 자연을 영상으로 감상해 보세요.</p>
+    <!-- width, height로 크기를 지정하고 controls로 재생 바를 띄웁니다. -->
+    <video width="640" height="360" controls>
+        <source src="media/video.mp4" type="video/mp4">
+        브라우저가 비디오 태그를 지원하지 않습니다.
+    </video>
+
+    <br><br>
+    <hr>
+    <p>
+        <a href="index.html">🏠 메인 페이지로 돌아가기</a>
+    </p>
+
+</body>
+</html>
