@@ -2,34 +2,317 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>다윤의 HTML 과제 메인</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome SKALA | My Portal</title> <!-- 브라우저 타이틀 -->
+
+    <!-- 전체 감성을 통일시켜 줄 Pretendard 폰트 링크 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <style>
+        /* 1. 웹페이지 기본 배경 및 서체 */
+        body {
+            background-color: #f4f6f9;
+            color: #2c3e50;
+            font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* 2. 상단 감성 헤더 배너 */
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* 다크 네이비 그라데이션 */
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        header h1 {
+            margin: 0 0 8px 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            margin: 0;
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        /* 3. 메인 포털 컨테이너 (그리드 레이아웃) */
+        .portal-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 240px 1fr 280px; /* 좌(메뉴), 중(메인), 우(프로필/aside) */
+            gap: 25px;
+        }
+
+        /* 반응형: 태블릿이나 모바일에서는 세로로 1줄 정렬 */
+        @media (max-width: 992px) {
+            .portal-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 공통 카드 스타일 */
+        .card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* 4. <nav> 왼쪽 메뉴 스타일 */
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            height: fit-content;
+        }
+
+        nav h2 {
+            font-size: 1.05rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            color: #475569;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            background-color: #f8fafc;
+        }
+
+        nav a:hover {
+            background-color: #1e293b;
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        /* 5. <main> 본문 영역 스타일 */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        main h2 {
+            font-size: 1.4rem;
+            color: #1e293b;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .welcome-text {
+            font-size: 1.05rem;
+            color: #475569;
+            margin-bottom: 20px;
+        }
+
+        /* 메인 대시보드 바로가기 그리드 카드 */
+        .shortcut-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .shortcut-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .shortcut-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+            box-shadow: 0 8px 15px rgba(59, 130, 246, 0.08);
+        }
+
+        .shortcut-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+            color: #0f172a;
+        }
+
+        .shortcut-card p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* 6. <aside> 우측 사이드바 스타일 */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: fit-content;
+        }
+
+        .profile-section {
+            text-align: center;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 20px;
+            margin-bottom: 15px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background-color: #e2e8f0;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .profile-name {
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin: 0 0 5px 0;
+            color: #1e293b;
+        }
+
+        .profile-job {
+            font-size: 0.85rem;
+            color: #3b82f6;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 푸터 스타일 */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            background-color: #0f172a;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>웹 프로그래밍 실습 과제 메인 페이지 💻</h1>
-    <p>안녕하세요! 과제 제출용 메인 인덱스 페이지입니다. 아래 링크를 클릭하시면 각 실습 과제 페이지로 이동합니다.</p>
-    <hr>
+    <!-- [상단 헤더] 포털 대문 배너 -->
+    <header>
+        <h1>Welcome SKALA</h1> <!-- 본문 타이틀 -->
+        <p>스칼라에 오신 것을 환영합니다.</p> <!-- 본문 -->
+    </header>
 
-    <h2>🔗 과제 바로가기</h2>
-    <!-- 
-      같은 폴더 안에 파일들이 나란히 들어있기 때문에 
-      href에 파일 이름만 적어주면 알아서 척척 연결됩니다! 
-    -->
-    <ul>
-        <li>
-            <a href="myProfile.html"><strong>👤 1. 나의 소개 페이지 (myProfile.html)</strong></a>
-            <p>- ul, ol, dl 태그를 활용한 자기소개 화면입니다.</p>
-        </li>
-        <br>
-        <li>
-            <a href="myClass.html"><strong>📅 2. 이번 학기 시간표 (myClass.html)</strong></a>
-            <p>- rowspan과 colspan을 활용하여 셀을 병합한 시간표 표(Table) 화면입니다.</p>
-        </li>
-    </ul>
+    <!-- [포털 전체 그리드 컨테이너] -->
+    <div class="portal-container">
 
-    <hr>
+        <!-- ❶ <nav>: 다른 파일로 쉽게 이동할 수 있는 좌측 메뉴 바 -->
+        <nav class="card">
+            <h2>Navigation</h2>
+            <a href="myClass.html">🗓️ 나의 시간표</a>
+            <a href="myHoliday.html">🌴 위시 휴가지</a>
+            <a href="myProfile.html">👤 자기소개</a>
+            <a href="myTrip.html">✈️ 추천 여행지</a>
+            <a href="signUp.html">🔑 회원 가입</a>
+        </nav>
+
+        <!-- ❷ <main>: 메인 아카이브 및 전체 포털 대시보드 요약 -->
+        <main class="card">
+            <h2>📂 My Personal Archive</h2>
+            <p class="welcome-text">
+                이곳은 개발 공부 기록, 전공 커리어 설계 및 삶의 균형을 이루는 목표를 함께 모아둔 개인 포털 대시보드입니다. 
+                아래 카드를 클릭하여 제가 차근차근 기록하고 구축해 나가고 있는 공간들을 확인해 보세요.
+            </p>
+
+            <div class="shortcut-grid">
+                <!-- 시간표 -->
+                <a href="myClass.html" class="shortcut-card">
+                    <h3>🗓️ 나의 시간표</h3>
+                    <p>스칼라에서 수강하는 알찬 과목들과 주간 스케줄을 한눈에 확인합니다.</p>
+                </a>
+                <!-- 휴가지 -->
+                <a href="myHoliday.html" class="shortcut-card">
+                    <h3>🌴 위시 휴가지</h3>
+                    <p>일상에서 벗어나 푸르른 자연 속에서 쉼표를 찍고 싶은 워너비 휴양지입니다.</p>
+                </a>
+                <!-- 프로필 -->
+                <a href="myProfile.html" class="shortcut-card">
+                    <h3>👤 자기소개</h3>
+                    <p>Self-Updater로서의 가치관과 공간정보 엔지니어 전공 소개를 담았습니다.</p>
+                </a>
+                <!-- 여행지 -->
+                <a href="myTrip.html" class="shortcut-card">
+                    <h3>✈️ 추천 여행지</h3>
+                    <p>오감으로 느낀 만년설의 풍경과 감성 사운드를 담은 여행 매거진입니다.</p>
+                </a>
+                <!-- 회원 가입 -->
+                <a href="signUp.html" class="shortcut-card">
+                    <h3>🔑 회원 가입</h3>
+                    <p>함께 성장을 도모할 이들과 연결되기 위한 정돈된 가입 폼입니다.</p>
+                </a>
+            </div>
+        </main>
+
+        <!-- ❸ <aside>: 사이드바 영역 (미니 프로필 및 부가 가치 기록) -->
+        <aside class="card">
+            <div class="profile-section">
+                <div class="profile-avatar">👨‍💻</div>
+                <h3 class="profile-name">Self-Updater</h3>
+                <p class="profile-job">Spatial Info Engineer</p>
+            </div>
+
+            <h4 style="margin: 0 0 10px 0; font-size: 0.95rem; color: #1e293b;">💡 My Value Key</h4>
+            <ul class="info-list">
+                <li>✨ 어제보다 나은 오늘</li>
+                <li>🎯 알고리즘 1일 1커밋</li>
+                <li>📚 꾸준함과 객관적 피드백</li>
+                <li>🌐 더 스마트한 데이터 시각화</li>
+            </ul>
+        </aside>
+
+    </div>
+
+    <!-- 푸터 영역 -->
     <footer>
-        <p>© 2026 다윤. All rights reserved.</p>
+        <p>© 2026 Skala Front-End Project. All rights reserved.</p>
     </footer>
 
 </body>

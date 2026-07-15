@@ -2,133 +2,264 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이번 학기 시간표</title>
+    
+    <!-- 메인 페이지와 감성을 맞춘 Pretendard 폰트 불러오기 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <style>
+        /* 1. 전체 배경 및 가독성 세팅 */
+        body {
+            background-color: #f4f6f9; /* 메인 페이지와 동일한 차분한 연회색 */
+            color: #2c3e50;
+            font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+            margin: 0 auto;
+            max-width: 1000px; /* 시간표가 넓으므로 폭을 조금 넓혔습니다 */
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: #1e293b;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        /* 2. 테이블 디자인 완전 리빌딩 (딱딱한 격자 무늬 제거) */
+        .table-container {
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* 은은한 입체감 */
+            overflow: hidden; /* 모서리 둥글게 깎기 */
+            border: 1px solid #e2e8f0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* 테두리 겹침 제거 */
+            text-align: center;
+        }
+
+        /* 3. 헤더 요일 행 디자인 (세련된 차콜 네이비) */
+        th {
+            background-color: #1e293b;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 16px 12px;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* 4. 시간 표시 열 스타일 */
+        td.time-col {
+            background-color: #f8fafc;
+            color: #64748b;
+            font-weight: bold;
+            font-size: 0.85rem;
+            border-right: 1px solid #f1f5f9;
+            padding: 14px 8px;
+            width: 130px;
+        }
+
+        /* 5. 기본 셀 스타일 */
+        td {
+            padding: 14px 10px;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #f1f5f9;
+            border-right: 1px solid #f1f5f9;
+            transition: all 0.2s;
+        }
+
+        /* 마우스 올리면 부드럽게 강조되는 효과 */
+        td:hover {
+            filter: brightness(0.97);
+        }
+
+        /* 6. 고급스러운 역할별 색조화 테마 (톤다운 파스텔 테마) */
+        .routine-ready { background-color: #f1f5f9; color: #475569; font-size: 0.85rem; } /* 준비 시간 */
+        .routine-review { background-color: #f8fafc; color: #94a3b8; font-style: italic; } /* 아침 복습 */
+        .lunch-break { background-color: #fffbeb; color: #b45309; font-weight: bold; } /* 점심 시간 */
+        .dinner-break { background-color: #fdf2f8; color: #be185d; font-weight: bold; } /* 저녁 시간 */
+
+        /* 오전 전공 수업 (포근한 세이지 그린, 스카이 블루 계열) */
+        .class-pro { background-color: #e0f2fe; color: #0369a1; font-weight: 500; }
+        .class-web { background-color: #fef3c7; color: #b45309; font-weight: 500; }
+        .class-py { background-color: #dcfce7; color: #15803d; font-weight: 500; }
+        .class-obj { background-color: #f3e8ff; color: #6b21a8; font-weight: 500; }
+        .class-front { background-color: #e0f2fe; color: #0369a1; font-weight: 500; }
+
+        /* 오후 AI 딥러닝 고강도 수업 (톤다운된 이지적인 테마) */
+        .ai-class {
+            background-color: #f0fdf4;
+            color: #166534;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border: 1px solid #bbf7d0;
+        }
+
+        /* 저녁 운동 (생기 넘치는 파스텔 멀티 컬러) */
+        .sport-1 { background-color: #eff6ff; color: #1d4ed8; }
+        .sport-2 { background-color: #fff1f2; color: #be185d; }
+        .sport-3 { background-color: #ecfdf5; color: #047857; }
+        .sport-4 { background-color: #fef9c3; color: #a16207; }
+        .sport-5 { background-color: #faf5ff; color: #6b21a8; }
+
+        /* 야간 갓생 자습 (깔끔한 그레이 & 라벤더블루) */
+        .study-night {
+            background-color: #e0f2fe;
+            color: #075985;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        /* 뒤로가기 버튼 링크 스타일 */
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 0;
+            padding: 10px 20px;
+            background-color: #1e293b;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: background 0.2s;
+        }
+        .back-btn:hover {
+            background-color: #0f172a;
+        }
+    </style>
 </head>
 <body>
 
     <h1>📅 이번 학기 나의 시간표</h1>
-    <hr>
+    <p class="subtitle">공간정보공학 전공 다윤의 갓생 일주일 루틴 아카이브</p>
 
-    <!-- border="1"을 주어야 표의 테두리가 깔끔하게 보입니다. -->
-    <table border="1" cellpadding="10" cellspacing="0">
-        <thead>
-            <tr bgcolor="#eeeeee">
-                <th>교시 / 시간</th>
-                <th>월요일</th>
-                <th>화요일</th>
-                <th>수요일</th>
-                <th>목요일</th>
-                <th>금요일</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- 0교시 -->
-            <tr>
-                <td><strong>0교시</strong><br>(08:00 - 09:00)</td>
-                <td align="center">🫧 씻기 & 준비 🪥</td>
-                <td align="center">🫧 씻기 & 준비 🪥</td>
-                <td align="center">🫧 씻기 & 준비 🪥</td>
-                <td align="center">🫧 씻기 & 준비 🪥</td>
-                <td align="center">🫧 씻기 & 준비 🪥</td>
-            </tr>
-            <!-- 1교시 -->
-            <tr>
-                <td><strong>1교시</strong><br>(09:00 - 10:00)</td>
-                <td>OT</td>
-                <td>복습</td>
-                <td>복습</td>
-                <td>복습</td>
-                <td>복습</td>
-            </tr>
+    <!-- 테이블 전체를 감싸는 세련된 컨테이너 -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>교시 / 시간</th>
+                    <th>월요일</th>
+                    <th>화요일</th>
+                    <th>수요일</th>
+                    <th>목요일</th>
+                    <th>금요일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 0교시 -->
+                <tr>
+                    <td class="time-col"><strong>0교시</strong><br>(08:00 - 09:00)</td>
+                    <td class="routine-ready">🫧 씻기 & 준비 🪥</td>
+                    <td class="routine-ready">🫧 씻기 & 준비 🪥</td>
+                    <td class="routine-ready">🫧 씻기 & 준비 🪥</td>
+                    <td class="routine-ready">🫧 씻기 & 준비 🪥</td>
+                    <td class="routine-ready">🫧 씻기 & 준비 🪥</td>
+                </tr>
+                <!-- 1교시 -->
+                <tr>
+                    <td class="time-col"><strong>1교시</strong><br>(09:00 - 10:00)</td>
+                    <td class="routine-review">OT</td>
+                    <td class="routine-review">아침 복습 📖</td>
+                    <td class="routine-review">아침 복습 📖</td>
+                    <td class="routine-review">아침 복습 📖</td>
+                    <td class="routine-review">아침 복습 📖</td>
+                </tr>
 
-            <!-- 2교시 & 3교시 (월~금 전체 2시간 연강 구조) -->
-            <tr>
-                <td><strong>2교시</strong><br>(10:00 - 11:00)</td>
-                <!-- 모든 요일에 rowspan="2"를 주어 아래 3교시 칸과 합칩니다. -->
-                <td rowspan="2" bgcolor="#e8f4fd" align="center">프로그래밍 기초개념🗄️</td>
-                <td rowspan="2" bgcolor="#fdf3e8" align="center">웹 프로그래밍 기초 🌐</td>
-                <td rowspan="2" bgcolor="#e8f4fd" align="center">Python 데이터 분석 🐍</td>
-                <td rowspan="2" bgcolor="#fbf0ff" align="center">객체지향 프로그래밍 ☕</td>
-                <td rowspan="2" bgcolor="#eafaf1" align="center">프론트엔드 프레임워크 ⚛️/td>
-            </tr>
-            <tr>
-                <td><strong>3교시</strong><br>(11:00 - 12:00)</td>
-                <!-- 
-                  [중요] 월, 화, 수, 목, 금 요일 칸이 전부 위에서 병합되어 내려왔기 때문에,
-                  여기서는 각 요일별 <td>를 완전히 생략하고 시간 표시 칸 하나만 남겨둡니다!
-                -->
-            </tr>
+                <!-- 2교시 & 3교시 (오전 전공 연강) -->
+                <tr>
+                    <td class="time-col"><strong>2교시</strong><br>(10:00 - 11:00)</td>
+                    <td rowspan="2" class="class-pro">프로그래밍 기초개념 🗄️</td>
+                    <td rowspan="2" class="class-web">웹 프로그래밍 기초 🌐</td>
+                    <td rowspan="2" class="class-py">Python 데이터 분석 🐍</td>
+                    <td rowspan="2" class="class-obj">객체지향 프로그래밍 ☕</td>
+                    <td rowspan="2" class="class-front">프론트엔드 프레임워크 ⚛️</td>
+                </tr>
+                <tr>
+                    <td class="time-col"><strong>3교시</strong><br>(11:00 - 12:00)</td>
+                    <!-- rowspan="2" 병합으로 요일 칸 생략 -->
+                </tr>
 
-            <!-- 점심시간 (가로 전체 병합 예시) -->
-            <tr align="center" bgcolor="#f9f9f9">
-                <td><strong>점심시간</strong><br>(12:00 - 13:00)</td>
-                <!-- colspan="5"를 쓰면 가로로 5칸을 한 번에 합칩니다! -->
-                <td colspan="5">✨ 맛있는 점심 시간 ✨</td>
-            </tr>
+                <!-- 점심시간 -->
+                <tr>
+                    <td class="time-col"><strong>점심시간</strong><br>(12:00 - 13:00)</td>
+                    <td colspan="5" class="lunch-break">🍽️ 맛있는 점심 시간 🍕</td>
+                </tr>
 
-            <!-- 4교시 ~ 8교시 (월~금 오후 1시-6시 전체 5시간 연강 구조) -->
-            <tr>
-                <td><strong>4교시</strong><br>(13:00 - 14:00)</td>
-                <!-- 5시간 연강을 위해 rowspan="5"를 모든 요일에 적용합니다. -->
-                <td rowspan="5" bgcolor="#f9ebea" align="center">🤖 딥러닝 응용 및 실습</td>
-                <td rowspan="5" bgcolor="#f5eeeb" align="center">🐍 파이썬 머신러닝 실무</td>
-                <td rowspan="5" bgcolor="#ebf5fb" align="center">💬 자연어 처리(NLP)와 LLM</td>
-                <td rowspan="5" bgcolor="#fef9e7" align="center">👁️ 컴퓨터 비전과 영상인식</td>
-                <td rowspan="5" bgcolor="#e8f8f5" align="center">📊 AI 기반 빅데이터 분석</td>
-            </tr>
-            <tr>
-                <td><strong>5교시</strong><br>(14:00 - 15:00)</td>
-                <!-- 모든 요일 칸이 위에서 병합되었으므로 시간 표시 td만 둡니다. -->
-            </tr>
-            <tr>
-                <td><strong>6교시</strong><br>(15:00 - 16:00)</td>
-            </tr>
-            <tr>
-                <td><strong>7교시</strong><br>(16:00 - 17:00)</td>
-            </tr>
-            <tr>
-                <td><strong>8교시</strong><br>(17:00 - 18:00)</td>
-            </tr>
-            <!-- 저녁 시간 (18:00 - 19:00) -->
-            <tr bgcolor="#fef5e7" align="center">
-                <td><strong>저녁 시간</strong><br>(18:00 - 19:00)</td>
-                <!-- 월~금 전체 가로 병합 -->
-                <td colspan="5">🍽️ 맛있는 저녁 식사 및 휴식 시간 ☕</td>
-            </tr>
+                <!-- 4교시 ~ 8교시 (오후 AI 연강) -->
+                <tr>
+                    <td class="time-col"><strong>4교시</strong><br>(13:00 - 14:00)</td>
+                    <td rowspan="5" class="ai-class">🤖 딥러닝 응용 및 실습</td>
+                    <td rowspan="5" class="ai-class">🐍 파이썬 머신러닝 실무</td>
+                    <td rowspan="5" class="ai-class">💬 자연어 처리(NLP)와 LLM</td>
+                    <td rowspan="5" class="ai-class">👁️ 컴퓨터 비전과 영상인식</td>
+                    <td rowspan="5" class="ai-class">📊 AI 기반 빅데이터 분석</td>
+                </tr>
+                <tr>
+                    <td class="time-col"><strong>5교시</strong><br>(14:00 - 15:00)</td>
+                </tr>
+                <tr>
+                    <td class="time-col"><strong>6교시</strong><br>(15:00 - 16:00)</td>
+                </tr>
+                <tr>
+                    <td class="time-col"><strong>7교시</strong><br>(16:00 - 17:00)</td>
+                </tr>
+                <tr>
+                    <td class="time-col"><strong>8교시</strong><br>(17:00 - 18:00)</td>
+                </tr>
 
-            <!-- 운동 시간 (19:00 - 20:00) -->
-            <tr align="center">
-                <td><strong>운동 시간</strong><br>(19:00 - 20:00)</td>
-                <!-- 매일매일 다른 종류의 운동으로 활력 충전! -->
-                <td bgcolor="#ebf5fb">🏋️‍♀️ 웨이트 (헬스)</td>
-                <td bgcolor="#fadbd8">🧘‍♀️ 힐링 요가</td>
-                <td bgcolor="#e8f8f5">🩰 기구 필라테스</td>
-                <td bgcolor="#fef9e7">🏃‍♀️ 러닝 & 유산소</td>
-                <td bgcolor="#f3e5f5">💃 신나는 댄스/줌바</td>
-            </tr>
+                <!-- 저녁 시간 -->
+                <tr>
+                    <td class="time-col"><strong>저녁 시간</strong><br>(18:00 - 19:00)</td>
+                    <td colspan="5" class="dinner-break">☕ 맛있는 저녁 식사 및 휴식 시간 🍰</td>
+                </tr>
 
-            <!-- 야간 자습 시간 (20:00 - 24:00) -->
-            <tr>
-                <td><strong>자습 1교시</strong><br>(20:00 - 21:00)</td>
-                <!-- 20시부터 24시까지 4시간 연강(rowspan="4") 구조로 묶어줍니다. -->
-                <td rowspan="4" bgcolor="#f2f4f4" align="center">💻<br>SQLD 자격증<br>기출 풀이</td>
-                <td rowspan="4" bgcolor="#f2f4f4" align="center">🐍<br>파이썬 알고리즘<br>1일 1코딩</td>
-                <td rowspan="4" bgcolor="#f2f4f4" align="center">📝<br>블로그 기술 정리<br>& 1일 1커밋</td>
-                <td rowspan="4" bgcolor="#f2f4f4" align="center">📊<br>빅데이터 분석<br>필기 요약 공부</td>
-                <td rowspan="4" bgcolor="#eceff1" align="center">🍿<br>한 주 정리 및<br>자유 힐링 코딩</td>
-            </tr>
-            <tr>
-                <td><strong>자습 2교시</strong><br>(21:00 - 22:00)</td>
-                <!-- 자습 2~4교시는 위에서 병합되었으므로 시간 표시 td만 남겨둡니다. -->
-            </tr>
-            <tr>
-                <td><strong>자습 3교시</strong><br>(22:00 - 23:00)</td>
-            </tr>
-            <tr>
-                <td><strong>자습 4교시</strong><br>(23:00 - 24:00)</td>
-            </tr>
-        </tbody>
-    </table>
+                <!-- 운동 시간 -->
+                <tr>
+                    <td class="time-col"><strong>운동 시간</strong><br>(19:00 - 20:00)</td>
+                    <td class="sport-1">🏋️‍♀️ 웨이트 (헬스)</td>
+                    <td class="sport-2">🧘‍♀️ 힐링 요가</td>
+                    <td class="sport-3">🩰 기구 필라테스</td>
+                    <td class="sport-4">🏃‍♀️ 러닝 & 유산소</td>
+                    <td class="sport-5">💃 신나는 댄스/줌바</td>
+                </tr>
+
+                <!-- 야간 자습 시간 -->
+                <tr>
+                    <td class="time-col"><strong>자습 1교시</strong><br>(20:00 - 21:00)</td>
+                    <td rowspan="4" class="study-night">💻<br>SQLD 자격증<br>기출 풀이</td>
+                    <td rowspan="4" class="study-night">🐍<br>파이썬 알고리즘<br>1일 1코딩</td>
+                    <td rowspan="4" class="study-night">📝<br>블로그 기술 정리<br>& 1일 1커밋</td>
+                    <td rowspan="4" class="study-night">📊<br>빅데이터 분석<br>필기 요약 공부</td>
+                    <td rowspan="4" class="study-night">🍿<br>한 주 정리 및<br>자유 힐링 코딩</td>
+                </tr>
+                <tr>
+                    <td class="time-col"><strong>자습 2교시</strong><br>(21:00 - 22:00)</td>
+                </tr>
+                <tr>
+                    <td class="time-col"><strong>자습 3교시</strong><br>(22:00 - 23:00)</td>
+                </tr>
+                <tr>
+                    <td class="time-col"><strong>자습 4교시</strong><br>(23:00 - 24:00)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 메인 페이지로 쉽게 돌아갈 수 있는 링크 추가 -->
+    <a href="index.html" class="back-btn">🏠 메인 페이지로 돌아가기</a>
 
 </body>
 </html>

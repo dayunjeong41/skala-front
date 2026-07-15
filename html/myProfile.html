@@ -2,39 +2,220 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>나의 소개</title>
+
+    <!-- 다른 페이지들과 감성을 맞춘 Pretendard 폰트 불러오기 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <style>
+        /* 1. 웹페이지 기본 배경 및 서체 */
+        body {
+            background-color: #f4f6f9; /* 일관성 있는 옅은 그레이 배경 */
+            color: #2c3e50;
+            font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+            line-height: 1.7;
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 40px 20px;
+        }
+
+        /* 2. 메인 프로필 카드 스타일 */
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); /* 고급스러운 다크 네이비 그라데이션 */
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 0;
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        /* 3. 섹션 공통 스타일 (하얀색 디자인 카드) */
+        section {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+        }
+
+        section h2 {
+            font-size: 1.3rem;
+            color: #1e293b;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 4. [ul] 좋아하는 음식 스타일리시하게 바꾸기 */
+        ul {
+            list-style: none; /* 기본 점박이 제거 */
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        ul li {
+            background-color: #f8fafc;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6; /* 왼쪽에 푸른색 포인트 바 */
+            font-size: 0.95rem;
+        }
+
+        /* 5. [ol] 올해의 목표 타임라인 스타일로 바꾸기 */
+        ol {
+            list-style: none; /* 기본 숫자 제거 */
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        ol li {
+            position: relative;
+            padding-left: 45px;
+            font-size: 0.95rem;
+        }
+
+        /* 가짜 숫자 동그라미 배지 만들기 */
+        ol li::before {
+            content: counter(item) "";
+            counter-increment: item;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            background-color: #1e293b;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* 6. [dl] 키워드 정의형 카드 스타일 */
+        dl {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        dt {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        dt::before {
+            content: "⚡";
+        }
+
+        dd {
+            margin: 5px 0 0 20px;
+            color: #475569;
+            font-size: 0.95rem;
+            background-color: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        /* 7. 메인 돌아가기 버튼 */
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 40px auto 0;
+            padding: 12px 24px;
+            background-color: #1e293b;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: background 0.2s;
+        }
+        .back-btn:hover {
+            background-color: #0f172a;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>안녕하세요, 저를 소개합니다! 👋</h1>
-    <hr>
+    <!-- 상단 멋진 헤더 영역 -->
+    <header>
+        <h1>안녕하세요, 저를 소개합니다! 👋</h1>
+        <p>어제보다 오늘 더 성장하는 슬기로운 갓생 아카이브</p>
+    </header>
 
-    <!-- 1. 좋아하는 음식 (순서 상관없는 ul) -->
-    <h2>🍕 내가 좋아하는 음식</h2>
-    <ul>
-        <li>떡볶이 (매콤한 건 언제나 환영이에요)</li>
-        <li>초밥 (특히 연어초밥을 정말 좋아합니다)</li>
-        <li>삼겹살과 미나리 구이</li>
-    </ul>
+    <main>
+        <!-- 1. 좋아하는 음식 -->
+        <section>
+            <h2>🍕 내가 좋아하는 음식</h2>
+            <ul>
+                <li><strong>떡볶이</strong> - 매콤한 건 언제나 스트레스를 싹 날려줘요.</li>
+                <li><strong>초밥</strong> - 특히 부드럽고 고소한 연어초밥을 정말 사랑합니다.</li>
+                <li><strong>삼겹살 & 미나리 구이</strong> - 향긋한 미나리와 노릇한 삼겹살 조합은 최고죠!</li>
+            </ul>
+        </section>
 
-    <!-- 2. 올해 할 일 (우선순위가 있는 ol) -->
-    <h2>📅 올해 꼭 이룰 목표</h2>
-    <ol>
-        <li>skala 수료하기</li>
-        <li>매일 꾸준히 알고리즘 문제 풀고 1일 1커밋 실천하기</li>
-        <li>틈틈이 운동해서 체력 기르고 건강 챙기기</li>
-    </ol>
+        <!-- 2. 올해 할 일 (우선순위가 있는 ol) -->
+        <section>
+            <h2 style="--counter-name: item;">📅 올해 꼭 이룰 목표</h2>
+            <ol style="counter-reset: item;">
+                <li><strong>skala 과정 수료하기</strong> - 포기하지 않고 끝까지 완주해서 성장하기!</li>
+                <li><strong>매일 꾸준한 알고리즘 & 1일 1커밋</strong> - 잔디를 푸르게 심으며 코딩 근력 키우기</li>
+                <li><strong>틈틈이 운동하며 체력 기르기</strong> - 갓생을 지속하기 위한 든든한 기초 체력 확보!</li>
+            </ol>
+        </section>
 
-    <!-- 3. 나를 설명하는 단어들 (정의 목록 dl) -->
-    <h2>✨ 나를 설명하는 키워드</h2>
-    <dl>
-        
-        <dt>Self-Updater (지속적인 성장)</dt>
-        <dd>어제보다 오늘 더 나은 사람이 되기 위해 끊임없이 객관적으로 스스로를 돌아보고 개선해 나갑니다.</dd>
+        <!-- 3. 나를 설명하는 단어들 (정의 목록 dl) -->
+        <section>
+            <h2>✨ 나를 설명하는 키워드</h2>
+            <dl>
+                <div>
+                    <dt>Self-Updater (지속적인 성장)</dt>
+                    <dd>어제보다 오늘 더 나은 사람이 되기 위해 끊임없이 객관적으로 스스로를 돌아보고 개선해 나갑니다.</dd>
+                </div>
+                <div>
+                    <dt>Spatial Info Engineer (공간정보 엔지니어)</dt>
+                    <dd>데이터 분석과 GIS 툴을 활용하여 세상을 더 스마트하게 시각화하는 능력을 키워가고 있습니다.</dd>
+                </div>
+            </dl>
+        </section>
+    </main>
 
-        <dt>Spatial Info Engineer (공간정보 엔지니어)</dt>
-        <dd>데이터 분석과 GIS 툴을 활용하여 세상을 더 스마트하게 시각화하는 능력을 키워가고 있습니다.</dd>
-    </dl>
+    <!-- 메인 페이지로 쉽게 돌아갈 수 있는 링크 -->
+    <a href="index.html" class="back-btn">🏠 메인 페이지로 돌아가기</a>
 
 </body>
 </html>
