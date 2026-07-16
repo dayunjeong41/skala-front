@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+    <title id="title">설산 여행지 풍경</title>
+    <desc id="desc">붉은 노을과 눈 덮인 산맥, 호수가 어우러진 여행지 이미지</desc>
+    <defs>
+        <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#fff1f3"/>
+            <stop offset="0.45" stop-color="#ffe4c7"/>
+            <stop offset="1" stop-color="#f8fafc"/>
+        </linearGradient>
+        <linearGradient id="lake" x1="0" x2="1">
+            <stop offset="0" stop-color="#fee2e2"/>
+            <stop offset="1" stop-color="#dbeafe"/>
+        </linearGradient>
+    </defs>
+    <rect width="1200" height="720" fill="url(#sky)"/>
+    <circle cx="930" cy="150" r="84" fill="#ff7a00" opacity="0.75"/>
+    <path d="M0 505 185 295 310 430 470 205 665 455 790 315 965 505Z" fill="#2b1b1f" opacity="0.88"/>
+    <path d="M185 295 245 360 310 430 250 397Z" fill="#ffffff" opacity="0.9"/>
+    <path d="M470 205 550 315 665 455 540 365Z" fill="#ffffff" opacity="0.95"/>
+    <path d="M790 315 875 410 965 505 860 455Z" fill="#ffffff" opacity="0.9"/>
+    <rect y="505" width="1200" height="215" fill="url(#lake)"/>
+    <path d="M0 590 C150 550 260 625 400 585 S650 555 820 595 1030 625 1200 575 L1200 720 0 720Z" fill="#ffffff" opacity="0.48"/>
+    <path d="M80 640 H1120" stroke="#ea002c" stroke-width="8" stroke-linecap="round" opacity="0.35"/>
+</svg>

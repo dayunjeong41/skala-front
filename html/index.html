@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../script/upDown.js" defer></script>
+    <script src="../script/grade.js" defer></script>
+    <script src="../script/bag.js" defer></script>
+    <script type="module" src="../script/realtimeInfo.js"></script>
     <title>Welcome SKALA | My Portal</title> <!-- 브라우저 타이틀 -->
 
 </head>
@@ -80,6 +84,25 @@
                 <li>📚 꾸준함과 객관적 피드백</li>
                 <li>🌐 더 스마트한 데이터 시각화</li>
             </ul>
+
+            <section class="tool-section">
+                <h2>JavaScript Lab</h2>
+                <button type="button" id="startUpDown">Up-Down 게임</button>
+                <button type="button" id="startGrade">성적 계산기</button>
+                <button type="button" id="showBag">내 가방 보기</button>
+                <div id="bag-box" class="mini-box"></div>
+            </section>
+
+            <section class="tool-section">
+                <h2>실시간 날씨</h2>
+                <label for="city-select">도시 선택</label>
+                <select id="city-select">
+                    <option value="seoul">서울</option>
+                    <option value="busan">부산</option>
+                    <option value="jeju">제주</option>
+                </select>
+                <div id="weather-box" class="mini-box">도시를 선택하면 날씨 정보가 표시됩니다.</div>
+            </section>
         </aside>
 
     </div>
