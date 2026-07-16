@@ -8,91 +8,67 @@
     <script src="../script/grade.js" defer></script>
     <script src="../script/bag.js" defer></script>
     <script type="module" src="../script/realtimeInfo.js"></script>
+    <script src="../script/navigation.js" defer></script>
     <title>Welcome SKALA | My Portal</title> <!-- 브라우저 타이틀 -->
 
 </head>
-<body>
+<body class="home-page">
 
-    <!-- [상단 헤더] 포털 대문 배너 -->
-    <header>
-        <h1>Welcome SKALA</h1> <!-- 본문 타이틀 -->
-        <p>스칼라에 오신 것을 환영합니다.</p> <!-- 본문 -->
-    </header>
+    <nav class="site-nav">
+        <a href="index.html" class="brand" data-route>DAYUN</a>
+        <div class="nav-center">
+            <a href="myProfile.html" data-route>ABOUT</a>
+            <a href="myHoliday.html" data-route>PROJECTS</a>
+            <a href="myClass.html" data-route>STUDY</a>
+            <a href="myTrip.html" data-route>TRIP</a>
+            <a href="signUp.html" data-route>CONTACT</a>
+        </div>
+        <a href="signUp.html" class="signup-link" data-route>SIGN UP</a>
+    </nav>
 
-    <!-- [포털 전체 그리드 컨테이너] -->
-    <div class="portal-container">
-
-        <!-- ❶ <nav>: 다른 파일로 쉽게 이동할 수 있는 좌측 메뉴 바 -->
-        <nav class="card">
-            <h2>Navigation</h2>
-            <a href="myClass.html">🗓️ 나의 시간표</a>
-            <a href="myHoliday.html">🌴 위시 휴가지</a>
-            <a href="myProfile.html">👤 자기소개</a>
-            <a href="myTrip.html">✈️ 추천 여행지</a>
-            <a href="signUp.html">🔑 회원 가입</a>
-        </nav>
-
-        <!-- ❷ <main>: 메인 아카이브 및 전체 포털 대시보드 요약 -->
-        <main class="card">
-            <h2>📂 My Personal Archive</h2>
-            <p class="welcome-text">
-                이곳은 개발 공부 기록, 전공 커리어 설계 및 삶의 균형을 이루는 목표를 함께 모아둔 개인 포털 대시보드입니다. 
-                아래 카드를 클릭하여 제가 차근차근 기록하고 구축해 나가고 있는 공간들을 확인해 보세요.
-            </p>
-
-            <div class="shortcut-grid">
-                <!-- 시간표 -->
-                <a href="myClass.html" class="shortcut-card">
-                    <h3>🗓️ 나의 시간표</h3>
-                    <p>스칼라에서 수강하는 알찬 과목들과 주간 스케줄을 한눈에 확인합니다.</p>
-                </a>
-                <!-- 휴가지 -->
-                <a href="myHoliday.html" class="shortcut-card">
-                    <h3>🌴 위시 휴가지</h3>
-                    <p>일상에서 벗어나 푸르른 자연 속에서 쉼표를 찍고 싶은 워너비 휴양지입니다.</p>
-                </a>
-                <!-- 프로필 -->
-                <a href="myProfile.html" class="shortcut-card">
-                    <h3>👤 자기소개</h3>
-                    <p>Self-Updater로서의 가치관과 공간정보 엔지니어 전공 소개를 담았습니다.</p>
-                </a>
-                <!-- 여행지 -->
-                <a href="myTrip.html" class="shortcut-card">
-                    <h3>✈️ 추천 여행지</h3>
-                    <p>오감으로 느낀 만년설의 풍경과 감성 사운드를 담은 여행 매거진입니다.</p>
-                </a>
-                <!-- 회원 가입 -->
-                <a href="signUp.html" class="shortcut-card">
-                    <h3>🔑 회원 가입</h3>
-                    <p>함께 성장을 도모할 이들과 연결되기 위한 정돈된 가입 폼입니다.</p>
-                </a>
-            </div>
-        </main>
-
-        <!-- ❸ <aside>: 사이드바 영역 (미니 프로필 및 부가 가치 기록) -->
-        <aside class="card">
-            <div class="profile-section">
-                <div class="profile-avatar">👨‍💻</div>
-                <h3 class="profile-name">Self-Updater</h3>
-                <p class="profile-job">Spatial Info Engineer</p>
-            </div>
-
-            <h4>💡 My Value Key</h4>
-            <ul class="info-list">
-                <li>✨ 어제보다 나은 오늘</li>
-                <li>🎯 알고리즘 1일 1커밋</li>
-                <li>📚 꾸준함과 객관적 피드백</li>
-                <li>🌐 더 스마트한 데이터 시각화</li>
-            </ul>
-
-            <section class="tool-section">
-                <h2>JavaScript Lab</h2>
-                <button type="button" id="startUpDown">Up-Down 게임</button>
-                <button type="button" id="startGrade">성적 계산기</button>
-                <button type="button" id="showBag">내 가방 보기</button>
-                <div id="bag-box" class="mini-box"></div>
+    <div class="portal-container explore-layout">
+        <main class="explore-hero">
+            <section class="hero-copy" aria-label="Explore DAYUN">
+                <p class="kicker">EXPLORE</p>
+                <h1>DAYUN</h1>
+                <p class="welcome-text">Explore my layers,<br>Discover my stories.</p>
+                <div class="location-card">
+                    <strong>SEOUL, KOREA</strong>
+                    <span>37.5665° N, 126.9780° E</span>
+                    <small>Spatial Information Engineer</small>
+                </div>
             </section>
 
+            <section class="map-stage" aria-label="Navigation map">
+                <a href="myProfile.html" class="map-pin pin-about" data-route>
+                    <span class="pin-dot"></span>
+                    <strong>ABOUT</strong>
+                    <small>나에 대해</small>
+                </a>
+                <a href="myHoliday.html" class="map-pin pin-projects" data-route>
+                    <span class="pin-dot"></span>
+                    <strong>PROJECTS</strong>
+                    <small>프로젝트</small>
+                </a>
+                <a href="myClass.html" class="map-pin pin-study" data-route>
+                    <span class="pin-dot"></span>
+                    <strong>STUDY</strong>
+                    <small>수업 / 학습</small>
+                </a>
+                <a href="myTrip.html" class="map-pin pin-trip" data-route>
+                    <span class="pin-dot"></span>
+                    <strong>TRIP</strong>
+                    <small>여행 기록</small>
+                </a>
+                <a href="signUp.html" class="map-pin pin-contact" data-route>
+                    <span class="pin-dot"></span>
+                    <strong>CONTACT</strong>
+                    <small>연락하기</small>
+                </a>
+            </section>
+        </main>
+
+        <aside class="explore-panel">
             <section class="tool-section">
                 <h2>실시간 날씨</h2>
                 <label for="city-select">도시 선택</label>
@@ -103,8 +79,23 @@
                 </select>
                 <div id="weather-box" class="mini-box">도시를 선택하면 날씨 정보가 표시됩니다.</div>
             </section>
-        </aside>
 
+            <section class="tool-section">
+                <h2>JavaScript Lab</h2>
+                <button type="button" id="startUpDown">Up-Down 게임</button>
+                <button type="button" id="startGrade">성적 계산기</button>
+                <button type="button" id="showBag">내 가방 보기</button>
+                <div id="bag-box" class="mini-box"></div>
+            </section>
+        </aside>
+    </div>
+
+    <div class="route-overlay" id="routeOverlay" aria-hidden="true">
+        <div class="radar">
+            <span></span>
+        </div>
+        <p id="routeStatus">Locating...</p>
+        <small>GPS 37.5665° N / 126.9780° E</small>
     </div>
 
     <!-- 푸터 영역 -->
