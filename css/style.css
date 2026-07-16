@@ -1716,3 +1716,143 @@ input[type="reset"],
         grid-template-columns: 1fr;
     }
 }
+
+/* Reference mockup proportion pass: reduce the visual scale */
+.home-page .site-nav {
+    min-height: 58px;
+    padding: 0 14px 0 20px;
+}
+
+.brand {
+    font-size: 1.15rem;
+}
+
+.nav-center {
+    gap: clamp(18px, 3.4vw, 38px);
+}
+
+.nav-center a,
+.signup-link {
+    font-size: 0.72rem;
+}
+
+.signup-link {
+    padding: 8px 15px;
+}
+
+.portal-container.explore-layout {
+    gap: 14px;
+    grid-template-columns: minmax(0, 1fr) 280px;
+}
+
+.explore-layout .explore-hero {
+    min-height: clamp(610px, 78vh, 730px);
+    grid-template-columns: minmax(250px, 0.5fr) minmax(500px, 1fr);
+    padding: 92px 22px 22px;
+}
+
+.kicker {
+    font-size: clamp(1.7rem, 3vw, 2.55rem);
+}
+
+.hero-copy h1 {
+    margin-bottom: 18px;
+    font-size: clamp(4.15rem, 8.1vw, 6.9rem);
+}
+
+.hero-copy .welcome-text {
+    margin-bottom: 56px;
+    font-size: 1.02rem;
+    line-height: 1.65;
+}
+
+.location-card {
+    width: min(220px, 100%);
+    padding: 16px;
+    gap: 7px;
+    font-size: 0.86rem;
+}
+
+.location-card small,
+.location-card span {
+    font-size: 0.78rem;
+}
+
+.map-stage {
+    min-height: 520px;
+}
+
+.map-pin {
+    max-width: 104px;
+    font-size: 0.78rem;
+    gap: 1px;
+}
+
+.map-pin small {
+    font-size: 0.68rem;
+}
+
+.pin-dot {
+    width: 22px;
+    height: 31px;
+}
+
+.pin-dot::before {
+    inset: 8px;
+}
+
+.map-pin::after {
+    width: 74px;
+    height: 17px;
+    margin-top: -7px;
+}
+
+.explore-panel {
+    padding: 92px 14px 14px;
+}
+
+.explore-panel .tool-section {
+    padding: 13px;
+    margin-bottom: 12px;
+}
+
+.explore-panel .tool-section h2 {
+    margin-bottom: 10px;
+    font-size: 0.86rem;
+}
+
+.tool-section label,
+.tool-section select,
+.tool-section button,
+.mini-box {
+    font-size: 0.78rem;
+}
+
+.tool-section button {
+    min-height: 34px;
+}
+
+.mini-box {
+    padding: 10px;
+}
+
+footer {
+    margin-top: 18px;
+    padding: 14px;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 1180px) {
+    .portal-container.explore-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .explore-layout .explore-hero {
+        grid-template-columns: minmax(230px, 0.48fr) minmax(360px, 1fr);
+        min-height: 650px;
+    }
+
+    .explore-panel {
+        padding: 14px;
+    }
+}
