@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+    <title id="title">Dark satellite map background</title>
+    <desc id="desc">Dark GIS style map with roads, river, city lights, and route lines.</desc>
+    <defs>
+        <radialGradient id="glow" cx="62%" cy="48%" r="58%">
+            <stop offset="0" stop-color="#26313a"/>
+            <stop offset="0.52" stop-color="#111820"/>
+            <stop offset="1" stop-color="#070b0f"/>
+        </radialGradient>
+        <filter id="soft">
+            <feGaussianBlur stdDeviation="2.2"/>
+        </filter>
+        <pattern id="lights" width="58" height="58" patternUnits="userSpaceOnUse">
+            <circle cx="11" cy="19" r="1.2" fill="#ffb156" opacity="0.65"/>
+            <circle cx="34" cy="9" r="0.9" fill="#ffffff" opacity="0.28"/>
+            <circle cx="48" cy="42" r="1.1" fill="#ff8a00" opacity="0.45"/>
+            <circle cx="22" cy="51" r="0.7" fill="#ffffff" opacity="0.22"/>
+        </pattern>
+    </defs>
+    <rect width="1400" height="900" fill="url(#glow)"/>
+    <path d="M-80 612 C150 510 265 648 440 570 C620 490 705 390 880 450 C1030 505 1130 560 1490 455" fill="none" stroke="#0a151b" stroke-width="118" opacity="0.95"/>
+    <path d="M-80 612 C150 510 265 648 440 570 C620 490 705 390 880 450 C1030 505 1130 560 1490 455" fill="none" stroke="#102732" stroke-width="62" opacity="0.85"/>
+    <g opacity="0.55">
+        <rect width="1400" height="900" fill="url(#lights)"/>
+    </g>
+    <g fill="none" stroke-linecap="round">
+        <path d="M30 210 C230 250 370 130 580 205 S910 345 1230 245" stroke="#5a6470" stroke-width="2" opacity="0.28"/>
+        <path d="M80 795 C245 660 340 640 510 690 C690 748 830 692 1010 620 C1160 560 1270 590 1360 640" stroke="#5a6470" stroke-width="2" opacity="0.25"/>
+        <path d="M165 -20 C245 145 250 315 385 432 C510 542 548 675 602 922" stroke="#5a6470" stroke-width="2" opacity="0.24"/>
+        <path d="M700 -30 C675 170 725 322 850 455 C970 585 970 705 920 930" stroke="#5a6470" stroke-width="2" opacity="0.22"/>
+        <path d="M-30 420 C135 398 310 405 455 470 C617 542 745 548 920 504 C1085 462 1240 395 1430 422" stroke="#ff8a00" stroke-width="2.5" opacity="0.22"/>
+        <path d="M275 35 L1180 820" stroke="#ffffff" stroke-width="1.2" opacity="0.13"/>
+        <path d="M45 690 L1260 65" stroke="#ffffff" stroke-width="1.2" opacity="0.12"/>
+    </g>
+    <g opacity="0.5" filter="url(#soft)">
+        <circle cx="820" cy="360" r="68" fill="#ff8a00" opacity="0.18"/>
+        <circle cx="935" cy="510" r="92" fill="#ff8a00" opacity="0.13"/>
+        <circle cx="410" cy="585" r="74" fill="#ffffff" opacity="0.06"/>
+    </g>
+    <g fill="none" stroke="#8b95a1" stroke-width="1" opacity="0.2">
+        <path d="M110 110 H1290 M110 220 H1290 M110 330 H1290 M110 440 H1290 M110 550 H1290 M110 660 H1290 M110 770 H1290"/>
+        <path d="M170 80 V820 M310 80 V820 M450 80 V820 M590 80 V820 M730 80 V820 M870 80 V820 M1010 80 V820 M1150 80 V820 M1290 80 V820"/>
+    </g>
+</svg>
