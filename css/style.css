@@ -2131,3 +2131,34 @@ footer {
         padding: 14px;
     }
 }
+
+/* Final hard override: current map and image-based pins */
+.explore-layout .explore-hero {
+    background:
+        linear-gradient(90deg, rgba(5, 8, 12, 0.97) 0%, rgba(5, 8, 12, 0.64) 32%, rgba(5, 8, 12, 0.08) 100%),
+        url("../html/media/explore-map-nw-se-river.png") center / cover no-repeat;
+}
+
+.pin-dot {
+    width: 23px;
+    height: 32px;
+    border-radius: 0;
+    background: currentColor;
+    transform: none;
+    clip-path: none;
+    -webkit-mask: url("../html/media/pin-marker.svg") center / contain no-repeat;
+    mask: url("../html/media/pin-marker.svg") center / contain no-repeat;
+}
+
+.pin-dot::before {
+    content: none;
+}
+
+.location-card strong::before {
+    width: 11px;
+    height: 15px;
+    background: var(--accent);
+    clip-path: none;
+    -webkit-mask: url("../html/media/pin-marker.svg") center / contain no-repeat;
+    mask: url("../html/media/pin-marker.svg") center / contain no-repeat;
+}
