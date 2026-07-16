@@ -2,7 +2,8 @@ export async function getWeather(city) {
     const cities = {
         seoul: { name: "서울", latitude: 37.5665, longitude: 126.9780 },
         busan: { name: "부산", latitude: 35.1796, longitude: 129.0756 },
-        jeju: { name: "제주", latitude: 33.4996, longitude: 126.5312 }
+        jeju: { name: "제주", latitude: 33.4996, longitude: 126.5312 },
+        gwangju: { name: "광주", latitude: 35.1595, longitude: 126.8526 }
     };
     const selectedCity = cities[city] || cities.seoul;
     const url = "https://api.open-meteo.com/v1/forecast?latitude="
