@@ -9,7 +9,7 @@ export async function getWeather(city) {
         + selectedCity.latitude
         + "&longitude="
         + selectedCity.longitude
-        + "&current=temperature_2m,relative_humidity_2m";
+        + "&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code";
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -23,6 +23,8 @@ export async function getWeather(city) {
         latitude: selectedCity.latitude,
         longitude: selectedCity.longitude,
         temperature: data.current.temperature_2m,
-        humidity: data.current.relative_humidity_2m
+        humidity: data.current.relative_humidity_2m,
+        apparentTemperature: data.current.apparent_temperature,
+        weatherCode: data.current.weather_code
     };
 }
