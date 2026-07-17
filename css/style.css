@@ -2163,3 +2163,383 @@ footer {
     -webkit-mask: url("../html/media/pin-marker.svg") center / contain no-repeat;
     mask: url("../html/media/pin-marker.svg") center / contain no-repeat;
 }
+
+/* Four-step responsive layout */
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.home-page .site-nav {
+    width: min(1440px, calc(100% - 32px));
+}
+
+.portal-container.explore-layout {
+    width: min(1440px, calc(100% - 32px));
+    grid-template-columns: minmax(0, 1fr) 270px;
+}
+
+.hero-copy h1 {
+    font-size: clamp(4.25rem, 5.2vw, 4.75rem);
+}
+
+.pin-dot {
+    width: 26px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.map-pin {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+@media (max-width: 1279px) {
+    /* Laptop */
+    .home-page .site-nav {
+        width: min(100% - 28px, 1180px);
+        min-height: 54px;
+    }
+
+    .brand {
+        font-size: 1.04rem;
+    }
+
+    .nav-center {
+        gap: clamp(16px, 2.7vw, 30px);
+    }
+
+    .nav-center a,
+    .signup-link {
+        font-size: 0.68rem;
+    }
+
+    .portal-container.explore-layout {
+        width: min(100% - 28px, 1180px);
+        grid-template-columns: minmax(0, 1fr) 240px;
+        gap: 12px;
+    }
+
+    .explore-layout .explore-hero {
+        min-height: 630px;
+        grid-template-columns: minmax(220px, 0.44fr) minmax(420px, 1fr);
+        padding: 82px 18px 18px;
+    }
+
+    .hero-copy h1 {
+        font-size: clamp(3.85rem, 5vw, 4.25rem);
+    }
+
+    .kicker {
+        font-size: clamp(1.45rem, 2.5vw, 2.1rem);
+    }
+
+    .hero-copy .welcome-text {
+        font-size: 0.92rem;
+        margin-bottom: 44px;
+    }
+
+    .location-card {
+        width: min(205px, 100%);
+        padding: 14px;
+    }
+
+    .pin-dot {
+        width: 23px;
+        height: 26px;
+    }
+
+    .map-pin {
+        font-size: 0.7rem;
+    }
+
+    .map-pin small {
+        font-size: 0.6rem;
+    }
+
+    .pin-about {
+        left: 24%;
+        top: 21%;
+    }
+
+    .pin-projects {
+        left: 60%;
+        top: 32%;
+    }
+
+    .pin-study {
+        left: 25%;
+        top: 55%;
+    }
+
+    .pin-trip {
+        left: 78%;
+        top: 60%;
+    }
+
+    .pin-contact {
+        left: 49%;
+        top: 76%;
+    }
+
+    .explore-panel {
+        padding: 82px 12px 12px;
+    }
+
+    .explore-panel .tool-section {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 1023px) {
+    /* Tablet */
+    .home-page .site-nav {
+        position: static;
+        margin: 16px auto 0;
+        transform: none;
+    }
+
+    .portal-container.explore-layout {
+        grid-template-columns: 1fr;
+        margin-top: 14px;
+    }
+
+    .explore-layout .explore-hero {
+        grid-template-columns: minmax(220px, 0.42fr) minmax(390px, 1fr);
+        min-height: 590px;
+        padding: 34px 20px 20px;
+    }
+
+    .hero-copy {
+        align-self: start;
+        padding-top: 54px;
+    }
+
+    .hero-copy h1 {
+        font-size: clamp(3.25rem, 7vw, 3.75rem);
+    }
+
+    .kicker {
+        font-size: clamp(1.35rem, 3vw, 1.85rem);
+    }
+
+    .map-stage {
+        min-height: 560px;
+    }
+
+    .pin-about {
+        left: 30%;
+        top: 16%;
+    }
+
+    .pin-projects {
+        left: 66%;
+        top: 27%;
+    }
+
+    .pin-study {
+        left: 30%;
+        top: 48%;
+    }
+
+    .pin-trip {
+        left: 72%;
+        top: 61%;
+    }
+
+    .pin-contact {
+        left: 49%;
+        top: 82%;
+    }
+
+    .explore-panel {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 0;
+        background: transparent;
+    }
+
+    .explore-panel .tool-section {
+        min-width: 0;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Mobile */
+    .home-page .site-nav {
+        position: relative;
+        z-index: 20;
+        left: auto;
+        transform: none;
+        margin: 16px auto 0;
+        width: min(100% - 32px, 720px);
+        min-height: 56px;
+        grid-template-columns: auto auto auto;
+        gap: 10px;
+        padding: 10px 12px;
+    }
+
+    .brand {
+        justify-self: start;
+        font-size: 1rem;
+    }
+
+    .menu-toggle {
+        display: inline-grid;
+        justify-self: center;
+        place-items: center;
+        gap: 4px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        cursor: pointer;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--text);
+    }
+
+    .signup-link {
+        justify-self: end;
+        padding: 8px 11px;
+        font-size: 0.66rem;
+    }
+
+    .nav-center {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        display: none;
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 12px;
+        background: rgba(5, 9, 13, 0.94);
+        backdrop-filter: blur(18px);
+    }
+
+    .nav-center.is-open {
+        display: grid;
+    }
+
+    .nav-center a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        border-radius: 8px;
+        font-size: 0.76rem;
+    }
+
+    .portal-container.explore-layout {
+        width: min(100% - 32px, 720px);
+        margin-top: 14px;
+    }
+
+    .explore-layout .explore-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 22px 18px 28px;
+        background-position: 58% center;
+    }
+
+    .hero-copy {
+        min-height: auto;
+        padding-top: 0;
+    }
+
+    .kicker {
+        font-size: clamp(1.25rem, 7vw, 1.75rem);
+    }
+
+    .hero-copy h1 {
+        font-size: clamp(2.5rem, 12vw, 3rem);
+    }
+
+    .hero-copy .welcome-text {
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+    }
+
+    .location-card {
+        width: min(100%, 250px);
+    }
+
+    .map-stage {
+        min-height: 740px;
+    }
+
+    .map-pin {
+        min-width: 44px;
+        min-height: 44px;
+        max-width: 96px;
+        font-size: 0.68rem;
+    }
+
+    .map-pin small {
+        font-size: 0.58rem;
+    }
+
+    .pin-dot {
+        width: 22px;
+        height: 25px;
+        object-fit: contain;
+    }
+
+    .pin-about {
+        left: 29%;
+        top: 10%;
+    }
+
+    .pin-projects {
+        left: 69%;
+        top: 24%;
+    }
+
+    .pin-study {
+        left: 31%;
+        top: 42%;
+    }
+
+    .pin-trip {
+        left: 70%;
+        top: 60%;
+    }
+
+    .pin-contact {
+        left: 47%;
+        top: 82%;
+    }
+
+    .explore-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .explore-panel .tool-section,
+    .mini-box,
+    .tool-section button,
+    .tool-section select,
+    .support-link {
+        max-width: 100%;
+    }
+
+    .support-actions {
+        grid-template-columns: 1fr 1fr;
+    }
+}

@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const overlay = document.getElementById("routeOverlay");
     const statusText = document.getElementById("routeStatus");
     const routeLinks = document.querySelectorAll("[data-route]");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const primaryMenu = document.getElementById("primary-menu");
     const steps = [
         "Locating...",
         "Current Position Found",
@@ -12,6 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!overlay || !statusText) {
         return;
+    }
+
+    if (menuToggle && primaryMenu) {
+        menuToggle.addEventListener("click", () => {
+            const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+            menuToggle.setAttribute("aria-expanded", String(!isOpen));
+            primaryMenu.classList.toggle("is-open", !isOpen);
+        });
     }
 
     routeLinks.forEach((link) => {
